@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Password Generator</h1>
+
+	<form id = "passwordGenerator">
+		<label for = "lowercase">Lowercase</label>
+        <input type = "radio" name = "lowercase" id = "lowercase"><br>
+        <label for = "uppercase">UPPERCASE</label>
+        <input type = "radio" name = "uppercase" id = "uppercase"><br>
+        <label for = "numbers">Numbers</label>
+        <input type = "radio" name = "numbers" id = "numbers"><br>
+        <label for = "special">Special</label>
+        <input type = "radio" name = "special" id = "special"><br><br>
+        <label for = "passwordLength">Password Length  8-128 characters</label>
+        <input type ="number" min = "8" max = "128" name = "passwordLength" id = "passwordLength"><br><br>
+        <button type = "submit">Get Password</button>
+        
+        
+
+</form>
+<div id = "PasswordBox"></div>
+<style>
+#PasswordBox{
+	width:400px;
+    height:100px;
+    background-color:black;
+    color:white;}
+</style>    
+<script>
+	const form = document.getElementById("passwordGenerator")
+    const lowercaseElement = document.getElementById("lowercase")
+    const uppercaseElement = document.getElementById("uppercase")
+    const numbersElement = document.getElementById("numbers")
+    const specialElement = document.getElementById("special")
+    const passwordBox = document.getElementById("PasswordBox")
+    
+    
+    let lowers = characterArray(97 ,122)
+    let uppers = characterArray(65 ,90)
+    let numbers = characterArray(48 ,57)
+    let special = characterArray(33 ,47).concat(characterArray(58 ,64)).concat(characterArray(91 ,96)).concat(characterArray(123, 126))
+    
+    
+    form.addEventListener("submit", e => {
+    	e.preventDefault()
+ 	const passwordLength = passwordLength.value
+    const lowercase = lowercaseElement.checked
+    const uppercase = uppercaseElement.checked
+    const digits = numbersElement.checked
+    const specials = specialElement.checked
+    
+    
+}    
+    	const generatePassword = (passwordLength, lowercase, uppercase, numbers, special) => {
+        	let charCodes = []
+            if (lowercase) charCodes = charCodes.concat(lowers)
+            if (uppercase) charCodes = charCodes.concat(uppers)
+            if (digits) charCodes = charCodes.concat(numbers)
+            if (specials) charCodes = charCodes.concat(special)
+            	const passwordCharacters = []
+                
+                for (let i = 0; i < passwordLength; i++){
+                let characterCode = charCodes[Math.floor(Math.random() * passwordLength]
+                passwordCharacters.push(String.fromcharCode(characterCode))
+                
+                }
+                return passwordCharacters
+                x = passwordCharacters.toString() 
+                alert (x)
+        } 
+		const characterArray = (low, high) => {
+        	const array = []
+            for (let i = low; i<=high; i++){
+            array.push(i)}
+            return array
+}            
+        
+    alert(password)
+ 		const password = generatePassword(passwordLength, lowercase, uppercase, numbers, special)
+       
+</script>
+
+</body>
+</html>
